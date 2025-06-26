@@ -1,7 +1,8 @@
 import { Config } from 'tailwindcss';
 
 const config = {
-  content: ['./src/**/*.{html,js,ts,tsx}'],
+  // content: ['./src/**/*.{html,js,ts,tsx}'],
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     fontFamily: {
       'sans': ['Montserrat', 'sans-serif'],

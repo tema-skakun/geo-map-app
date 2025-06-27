@@ -85,7 +85,8 @@ export default function GeoMapApp() {
 
     // load geojson once
     useEffect(() => {
-        fetch('/data.geojson')
+        // fetch('/data.geojson')
+        fetch(`${import.meta.env.BASE_URL}data.geojson`)
             .then((r) => r.json())
             .then((gj) => {
                 const arr: Feature[] = gj.features.map((f: any, idx: number) => {

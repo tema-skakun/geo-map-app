@@ -1,0 +1,45 @@
+name: Deploy Vite site to GitHub Pages
+
+on:
+  push:
+    branches: [main]       # публикуем при каждом пуше в main
+  workflow_dispatch:       # позволяeт запускать вручную
+
+permissions:
+  contents: read           # читать репозиторий
+  pages: write             # писать в ветку gh-pages
+  id-token: write          # треб-ся deploy-pages
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20   # можно 18/22 – главное LTS
+          cache: 'npm'
+
+      - run: npm ci          # восстанавливаем зависимости
+      - run: npm run build   # Vite кладёт статические файлы в dist/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist         # загружаем артефакт в Pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

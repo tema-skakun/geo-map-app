@@ -1,8 +1,13 @@
 import { Config } from 'tailwindcss';
+import withMT from '@material-tailwind/react/utils/withMT';
 
 const config = {
-  // content: ['./src/**/*.{html,js,ts,tsx}'],
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}"
+  ],
   theme: {
     fontFamily: {
       'sans': ['Montserrat', 'sans-serif'],
@@ -69,7 +74,10 @@ const config = {
       },
       height: {
         topbar: '68px',
-      }
+      },
+      boxShadow: {
+        'green-light': '0 0 10px rgba(100, 255, 100, 0.3)',
+      },
     },
   },
   plugins: [

@@ -80,8 +80,8 @@ function FitBounds({bounds}: { bounds: [[number, number], [number, number]] }) {
 export default function GeoMapApp() {
     const [features, setFeatures] = useState<Feature[]>([]);
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const [filterRegion, setFilterRegion] = useState('');
-    const [filterSettlement, setFilterSettlement] = useState('');
+    const [filterRegion, setFilterRegion] = useState<string | null>(null);
+    const [filterSettlement, setFilterSettlement] = useState<string | null>(null);
 
     // load geojson once
     useEffect(() => {

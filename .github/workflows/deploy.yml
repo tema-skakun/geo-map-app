@@ -1,14 +1,15 @@
+# .github/workflows/deploy.yml
 name: Deploy Vite site to GitHub Pages
 
 on:
   push:
-    branches: [main]       # публикуем при каждом пуше в main
-  workflow_dispatch:       # позволяeт запускать вручную
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: read           # читать репозиторий
-  pages: write             # писать в ветку gh-pages
-  id-token: write          # треб-ся deploy-pages
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: 'pages'
@@ -20,17 +21,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Устанавливаем Node + автоматически настраиваем кэш Yarn
       - uses: actions/setup-node@v4
         with:
-          node-version: 20   # можно 18/22 – главное LTS
-          cache: 'npm'
+          node-version: 20
+          cache: 'yarn'
 
-      - run: npm ci          # восстанавливаем зависимости
-      - run: npm run build   # Vite кладёт статические файлы в dist/
+      # Ставим зависимости строго по yarn.lock
+      - run: yarn --frozen-lockfile      # аналог npm ci :contentReference[oaicite:0]{index=0}
+      - run: yarn build                  # запускает скрипт "build"
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist         # загружаем артефакт в Pages
+          path: dist
 
   deploy:
     needs: build

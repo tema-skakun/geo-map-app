@@ -26,12 +26,12 @@ export const randomColour = (seed: string): string => {
 	return `hsl(${h}, 70%, 60%)`;
 };
 
-export const calculateBounds = (features: Feature[]): Bounds => {
+export const calculateBounds = (features: Feature[], ignoreSelection = true): Bounds => {
 	if (!features.length) return [[0, 0], [0, 0]];
 
 	let minLat = 90, minLng = 180, maxLat = -90, maxLng = -180;
 
-	features.forEach(({ latlng: [lat, lng] }) => {
+	features.forEach(({latlng: [lat, lng]}) => {
 		minLat = Math.min(minLat, lat);
 		minLng = Math.min(minLng, lng);
 		maxLat = Math.max(maxLat, lat);

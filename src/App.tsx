@@ -1,7 +1,7 @@
-import { AppLayout } from './components/app-layout';
+import {AppLayout} from "./components/app-layout";
 
 export default function App() {
-	return <AppLayout />;
+	return <AppLayout/>;
 }
 
 // Single‑page map app: React 18 + Vite 5 + TS + Tailwind + Leaflet

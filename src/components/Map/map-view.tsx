@@ -14,9 +14,12 @@ interface MapViewProps {
 export const MapView = ({bounds, features, selectedId, onSelect}: MapViewProps) => (
 	<MapContainer
 		className="h-full w-full"
-		zoom={6}
-		center={[56, 40]}
 		scrollWheelZoom
+		maxZoom={18}
+		minZoom={3}
+		wheelPxPerZoomLevel={150}
+		maxBounds={[[-84, -200], [84, 200]]}
+		maxBoundsViscosity={0.97}
 	>
 		<TileLayer
 			url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

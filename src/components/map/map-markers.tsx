@@ -25,7 +25,6 @@ export const MapMarkers = memo(({
 					fillOpacity: 0.8,
 					weight: selectedId === f.id ? 6 : 1,
 				}}
-				eventHandlers={{click: () => onSelect(f.id)}}
 			>
 				<Popup>
 					<PopupContent feature={f}/>

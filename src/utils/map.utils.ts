@@ -7,7 +7,9 @@ proj4.defs(
 );
 
 export const projectPoint = ([x, y]: [number, number]): [number, number] => {
-	const [lon, lat] = proj4('EPSG:3857', 'EPSG:4326', [x, y]);
+	// Для EPSG:3857 координаты уже в метрах, преобразуем напрямую
+	const lon = x / 20037508.34 * 180;
+	const lat = Math.atan(Math.exp(y / 20037508.34 * Math.PI)) * 360 / Math.PI - 90;
 	return [lat, lon];
 };
 

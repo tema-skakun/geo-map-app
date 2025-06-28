@@ -1,6 +1,6 @@
 import {MapLegend} from '../map-legend';
-import {RegionFilter} from '../../Filters/region-filter';
-import {SettlementFilter} from '../../Filters/settlement-filter';
+import {RegionFilter} from '../../filters/region-filter';
+import {SettlementFilter} from '../../filters/settlement-filter';
 import {Feature} from '../../../types/map.types';
 import {ChevronLeft, ChevronRight} from "../../icons";
 

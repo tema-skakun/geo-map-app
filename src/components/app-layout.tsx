@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {MapView} from './Map/map-view';
-import {Sidebar} from './UI/Sidebar/sidebar';
+import {MapView} from './map/map-view';
+import {Sidebar} from './ui/sidebar/sidebar';
 import {useMapData} from '../hooks/use-map-data';
 import {calculateBounds} from '../utils/map.utils';
 

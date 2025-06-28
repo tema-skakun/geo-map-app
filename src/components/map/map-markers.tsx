@@ -1,7 +1,7 @@
 import {memo} from 'react';
 import {CircleMarker, Popup} from 'react-leaflet';
 import {Feature} from '../../types/map.types';
-import {PopupContent} from '../UI/popup-content';
+import {PopupContent} from '../ui/popup-content';
 
 export const MapMarkers = memo(({
 																	features,

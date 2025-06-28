@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import {MapContainer, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import {FitBounds} from './fit-bounds';
@@ -12,9 +11,12 @@ interface MapViewProps {
 	onSelect: (id: string) => void;
 }
 
-export const MapView = ({bounds, features, selectedId, onSelect}: MapViewProps) => {
-	const [hasPopupOpen, setHasPopupOpen] = useState(false);
-
+export const MapView = ({
+													bounds,
+													features,
+													selectedId,
+													onSelect
+												}: MapViewProps) => {
 	return (
 		<MapContainer
 			className="h-full w-full"
@@ -29,13 +31,12 @@ export const MapView = ({bounds, features, selectedId, onSelect}: MapViewProps) 
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				attribution="&copy; OpenStreetMap contributors"
 			/>
-			<FitBounds bounds={bounds} ignoreFit={hasPopupOpen}/>
+			<FitBounds bounds={bounds}/>
 			<MapMarkers
 				features={features}
 				selectedId={selectedId}
 				onSelect={onSelect}
-				onPopupOpen={setHasPopupOpen}
 			/>
 		</MapContainer>
 	);
-};
+}

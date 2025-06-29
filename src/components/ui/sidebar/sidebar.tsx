@@ -2,11 +2,11 @@ import {MapLegend} from '../map-legend';
 import {RegionFilter} from '../../filters/region-filter';
 import {SettlementFilter} from '../../filters/settlement-filter';
 import {Feature} from '../../../types/map.types';
-import {ChevronLeft, ChevronRight, XMark} from "../../icons";
+import {XMark} from "../../icons";
 
 interface SidebarProps {
 	isOpen: boolean;
-	onToggle: () => void;
+	onToggle?: () => void;
 	features: Feature[];
 	filterRegion: string | null;
 	filterSettlement: string | null;
@@ -16,7 +16,6 @@ interface SidebarProps {
 
 export const Sidebar = ({
 													isOpen,
-													onToggle,
 													features,
 													filterRegion,
 													filterSettlement,
@@ -37,13 +36,13 @@ export const Sidebar = ({
 				isOpen ? 'w-[20dvw] min-w-[250px]' : 'w-0 overflow-hidden'
 			}`}
 		>
-			<button
-				onClick={onToggle}
-				className="self-end p-2 focus:outline-none text-gray-600 hover:text-gray-900"
-				aria-label={isOpen ? "Свернуть сайдбар" : "Развернуть сайдбар"}
-			>
-				{isOpen ? <ChevronLeft/> : <ChevronRight/>}
-			</button>
+			{/*<button*/}
+			{/*	onClick={onToggle}*/}
+			{/*	className="self-end p-2 focus:outline-none text-gray-600 hover:text-gray-900"*/}
+			{/*	aria-label={isOpen ? "Свернуть сайдбар" : "Развернуть сайдбар"}*/}
+			{/*>*/}
+			{/*	{isOpen ? <ChevronLeft/> : <ChevronRight/>}*/}
+			{/*</button>*/}
 
 			<div className="flex-1 overflow-y-auto space-y-4 mt-2">
 				<div className="flex items-center gap-2">

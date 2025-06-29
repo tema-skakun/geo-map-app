@@ -26,10 +26,10 @@ export const MapView = ({
 			wheelPxPerZoomLevel={150}
 			maxBounds={[[-84, -200], [84, 200]]}
 			maxBoundsViscosity={0.97}
+			attributionControl={false}
 		>
 			<TileLayer
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-				attribution="&copy; OpenStreetMap contributors"
 			/>
 			<FitBounds bounds={bounds}/>
 			<MapMarkers

@@ -14,10 +14,15 @@ export const projectPoint = ([x, y]: [number, number]): [number, number] => {
 };
 
 export const radiusFromPop = (pop: number): number => {
-	if (pop > 250_000) return 100;
-	if (pop > 50_000) return 70;
-	if (pop > 10_000) return 30;
-	return 10;
+	if (pop > 1_000_000) return 9;
+	if (pop > 500_000) return 8;
+	if (pop > 250_000) return 7;
+	if (pop > 100_000) return 6;
+	if (pop > 50_000) return 5;
+	if (pop > 10_000) return 4;
+	if (pop > 5_000) return 3;
+	if (pop > 1_000) return 2;
+	return 1;
 };
 
 export const randomColour = (seed: string): string => {

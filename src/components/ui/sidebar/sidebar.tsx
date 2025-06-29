@@ -59,7 +59,7 @@ export const Sidebar = ({
 							aria-label="Сбросить фильтр региона"
 							title="Сбросить фильтр региона"
 						>
-							<XMark width='10' height='10'/>
+							<XMark width={10} height={10}/>
 						</button>
 					)}
 				</div>
@@ -77,7 +77,7 @@ export const Sidebar = ({
 							aria-label="Сбросить фильтр населенного пункта"
 							title="Сбросить фильтр населенного пункта"
 						>
-							<XMark width='10' height='10'/>
+							<XMark width={10} height={10}/>
 						</button>
 					)}
 				</div>

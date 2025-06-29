@@ -7,11 +7,11 @@ export const useMapData = () => {
 
 	useEffect(() => {
 		const loadData = async () => {
-			const response = await fetch(`${import.meta.env.BASE_URL}data.geojson`);
+			const response = await fetch(`${import.meta.env.BASE_URL}data2.geojson`);
 			const geojson = await response.json();
 
 			const processedFeatures = geojson.features.map((f: any, idx: number) => {
-				const pop = f.properties['Численность населения согласно Всероссийской переписи населения 2021 г.'];
+				const pop = f.properties['Численность населения 2021'];
 				const latlng = projectPoint(f.geometry.coordinates);
 
 				return {

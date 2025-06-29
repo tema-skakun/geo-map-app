@@ -24,7 +24,7 @@ export const MapView = ({
 			maxZoom={18}
 			minZoom={3}
 			wheelPxPerZoomLevel={150}
-			maxBounds={[[-84, -200], [84, 200]]}
+			maxBounds={[[-84, 0], [84, 200]]}
 			maxBoundsViscosity={0.97}
 			attributionControl={false}
 		>

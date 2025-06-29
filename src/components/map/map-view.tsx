@@ -20,6 +20,7 @@ export const MapView = ({
 	return (
 		<MapContainer
 			className="h-full w-full"
+			// style={{ height: '100dvh', width: '100dvw' }}
 			scrollWheelZoom
 			maxZoom={18}
 			minZoom={3}

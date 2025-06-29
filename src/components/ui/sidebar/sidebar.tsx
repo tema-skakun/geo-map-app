@@ -5,7 +5,7 @@ import {Feature} from '../../../types/map.types';
 import {XMark} from "../../icons";
 
 interface SidebarProps {
-	isOpen: boolean;
+	isOpen?: boolean;
 	onToggle?: () => void;
 	features: Feature[];
 	filterRegion: string | null;
@@ -15,7 +15,6 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({
-													isOpen,
 													features,
 													filterRegion,
 													filterSettlement,
@@ -32,9 +31,7 @@ export const Sidebar = ({
 
 	return (
 		<div
-			className={`bg-white shadow-green-light p-[10px] h-full flex flex-col transition-all duration-500 ease-linear ${
-				isOpen ? 'w-[20dvw] min-w-[250px]' : 'w-0 overflow-hidden'
-			}`}
+			className='bg-white h-[calc(100%-20px)] min-w-[20dvw] flex flex-col transition-all duration-500 ease-linear p-[10px]'
 		>
 			{/*<button*/}
 			{/*	onClick={onToggle}*/}

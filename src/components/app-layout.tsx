@@ -26,17 +26,18 @@ export const AppLayout = () => {
 	);
 
 	return (
-		<div className="flex h-screen w-screen">
-			<Sidebar
-				isOpen={isSidebarOpen}
-				onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
-				features={features}
-				filterRegion={filterRegion}
-				filterSettlement={filterSettlement}
-				onRegionChange={setFilterRegion}
-				onSettlementChange={setFilterSettlement}
-			/>
-			<div className={`h-full transition-all duration-500 ease-linear ${isSidebarOpen ? 'w-[80dvw]' : 'w-full'}`}>
+		<div className="flex h-full w-screen overflow-hidden"> {/* Добавлено overflow-hidden */}
+			<div className='overflow-hidden'>
+				<Sidebar
+					onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+					features={features}
+					filterRegion={filterRegion}
+					filterSettlement={filterSettlement}
+					onRegionChange={setFilterRegion}
+					onSettlementChange={setFilterSettlement}
+				/>
+			</div>
+			<div className='screen overflow-hidden w-[80dvw]'>
 				<MapView
 					bounds={bounds}
 					features={filteredFeatures}

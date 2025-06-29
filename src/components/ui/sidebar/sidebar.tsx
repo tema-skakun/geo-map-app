@@ -30,9 +30,7 @@ export const Sidebar = ({
 	};
 
 	return (
-		<div
-			className='bg-white h-[calc(100%-20px)] min-w-[20dvw] flex flex-col transition-all duration-500 ease-linear p-[10px]'
-		>
+		<div className='bg-white h-[calc(100%-20px)] min-w-[20dvw] flex flex-col transition-all duration-500 ease-linear p-[10px]'>
 			{/*<button*/}
 			{/*	onClick={onToggle}*/}
 			{/*	className="self-end p-2 focus:outline-none text-gray-600 hover:text-gray-900"*/}

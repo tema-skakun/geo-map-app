@@ -26,7 +26,7 @@ export const AppLayout = () => {
 	);
 
 	return (
-		<div className="flex h-full w-screen overflow-hidden"> {/* Добавлено overflow-hidden */}
+		<div className="flex h-full w-screen overflow-hidden">
 			<div className='overflow-hidden'>
 				<Sidebar
 					onToggle={() => setIsSidebarOpen(!isSidebarOpen)}

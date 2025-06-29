@@ -25,6 +25,12 @@ export const MapMarkers = memo(({
 					fillOpacity: 0.8,
 					weight: selectedId === f.id ? 6 : 1,
 				}}
+				eventHandlers={{
+					click: () => {
+						onSelect(f.id); // Явно вызываем onSelect
+					}
+				}}
+				className={selectedId === f.id ? 'transition-transform scale-110' : ''}
 			>
 				<Popup>
 					<PopupContent feature={f}/>

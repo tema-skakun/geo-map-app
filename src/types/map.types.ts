@@ -17,3 +17,9 @@ export interface Feature {
 }
 
 export type Bounds = [[number, number], [number, number]];
+
+export type IconProps = {
+	width?: number;
+	height?: number;
+	fill?: string;
+};

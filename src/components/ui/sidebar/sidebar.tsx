@@ -2,7 +2,7 @@ import {MapLegend} from '../map-legend';
 import {RegionFilter} from '../../filters/region-filter';
 import {SettlementFilter} from '../../filters/settlement-filter';
 import {Feature} from '../../../types/map.types';
-import {ChevronLeft, ChevronRight} from "../../icons";
+import {ChevronLeft, ChevronRight, XMark} from "../../icons";
 
 interface SidebarProps {
 	isOpen: boolean;
@@ -26,6 +26,11 @@ export const Sidebar = ({
 	const regions = Array.from(new Set(features.map((f) => f.properties['Субъект'])));
 	const settlements = Array.from(new Set(features.map((f) => f.properties['Название'])));
 
+	const handleResetFilters = () => {
+		onRegionChange(null);
+		onSettlementChange(null);
+	};
+
 	return (
 		<div
 			className={`bg-white shadow-green-light p-[10px] h-full flex flex-col transition-all duration-500 ease-linear ${
@@ -41,17 +46,51 @@ export const Sidebar = ({
 			</button>
 
 			<div className="flex-1 overflow-y-auto space-y-4 mt-2">
-				<RegionFilter
-					regions={regions}
-					value={filterRegion}
-					onChange={onRegionChange}
-				/>
+				<div className="flex items-center gap-2">
+					<RegionFilter
+						regions={regions}
+						value={filterRegion}
+						onChange={onRegionChange}
+					/>
+					{filterRegion && (
+						<button
+							onClick={() => onRegionChange(null)}
+							className="text-gray-500 hover:text-gray-700 p-1"
+							aria-label="Сбросить фильтр региона"
+							title="Сбросить фильтр региона"
+						>
+							<XMark width='10' height='10'/>
+						</button>
+					)}
+				</div>
 
-				<SettlementFilter
-					settlements={settlements}
-					value={filterSettlement}
-					onChange={onSettlementChange}
-				/>
+				<div className="flex items-center gap-2">
+					<SettlementFilter
+						settlements={settlements}
+						value={filterSettlement}
+						onChange={onSettlementChange}
+					/>
+					{filterSettlement && (
+						<button
+							onClick={() => onSettlementChange(null)}
+							className="text-gray-500 hover:text-gray-700"
+							aria-label="Сбросить фильтр населенного пункта"
+							title="Сбросить фильтр населенного пункта"
+						>
+							<XMark width='10' height='10'/>
+						</button>
+					)}
+				</div>
+
+				{(filterRegion || filterSettlement) && (
+					<button
+						title="Сбросить все фильтры"
+						onClick={handleResetFilters}
+						className="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md transition-colors"
+					>
+						Сбросить все фильтры
+					</button>
+				)}
 
 				<MapLegend/>
 			</div>

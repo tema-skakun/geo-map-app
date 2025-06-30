@@ -45,3 +45,18 @@ export const calculateBounds = (features: Feature[]): Bounds => {
 
 	return [[minLat, minLng], [maxLat, maxLng]];
 };
+
+/**
+ * Вычисляет цвет по динамике населённости 1989→2021:
+ *   синий  (#0000FF)  — убыль >15%
+ *   голубой (#5ad3f1) — убыль 0–15%
+ *   красный (#FF0000) — прирост
+ */
+export const dynamicColorFromChange = (dynamic: number): string => {
+	if (dynamic < 0) {
+		return Math.abs(dynamic) > 15
+			? '#0000FF'
+			: '#5ad3f1';
+	}
+	return '#FF0000';
+};

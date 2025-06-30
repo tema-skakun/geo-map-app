@@ -6,7 +6,7 @@ import {PopupContent} from '../ui/popup-content';
 interface MapMarkersProps {
 	features: Feature[];
 	selectedId: string | null;
-	onSelect: (id: string) => void;
+	onSelect: (id: string | null) => void;
 }
 
 export const MapMarkers = memo(({
@@ -28,11 +28,14 @@ export const MapMarkers = memo(({
 				eventHandlers={{
 					click: () => {
 						onSelect(f.id); // Явно вызываем onSelect
-					}
+					},
+					popupclose: () => onSelect(null)
 				}}
 				className={selectedId === f.id ? 'transition-transform scale-110' : ''}
 			>
-				<Popup>
+				<Popup
+					onClose={() => onSelect(null)}
+				>
 					<PopupContent feature={f}/>
 				</Popup>
 			</CircleMarker>

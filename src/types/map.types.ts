@@ -23,3 +23,30 @@ export type IconProps = {
 	height?: number;
 	fill?: string;
 };
+
+
+export interface Feature {
+	type: string;
+	properties: {
+		"ID (№ п": number;
+		"Полный адресс": string;
+		"Субъект": string;
+		"Название": string;
+		"Критерий, на основании которого населенный пункт включен в Единый перечень": string;
+		"Численность населения 1989": number;
+		"Численность населения 2001": number;
+		"Численность населения 2010": number;
+		"Численность населения 2021": number;
+		"Коэффициент смертности": number;
+		"Коэффициент избыточной смертности в 2021": number;
+		"Убыль населения 1989-2021": number;
+	};
+	geometry: {
+		type: string;
+		coordinates: [number, number];
+	};
+}
+
+export interface GeoJSONData {
+	features: Feature[];
+}

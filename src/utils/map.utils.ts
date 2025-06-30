@@ -1,5 +1,5 @@
 import proj4 from 'proj4';
-import {Bounds, Feature} from "../types/map.types";
+import {Bounds, Feature, GeoJSONData} from "../types/map.types";
 
 proj4.defs(
 	'EPSG:3857',
@@ -60,3 +60,16 @@ export const dynamicColorFromChange = (dynamic: number): string => {
 	}
 	return '#FF0000';
 };
+
+export function getUniqueCriteria(data: GeoJSONData): string[] {
+	const criteriaSet = new Set<string>();
+
+	data.features.forEach(feature => {
+		const criterion = feature.properties["Критерий, на основании которого населенный пункт включен в Единый перечень"];
+		if (criterion) {
+			criteriaSet.add(criterion);
+		}
+	});
+
+	return Array.from(criteriaSet);
+}

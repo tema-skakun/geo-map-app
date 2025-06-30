@@ -8,7 +8,7 @@ interface MapViewProps {
 	bounds: Bounds;
 	features: Feature[];
 	selectedId: string | null;
-	onSelect: (id: string) => void;
+	onSelect: (id: string | null) => void;
 }
 
 export const MapView = ({

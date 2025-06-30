@@ -13,32 +13,35 @@ export const MapMarkers = memo(({
 																	features,
 																	selectedId,
 																	onSelect
-																}: MapMarkersProps) => (
-	<>
-		{features.map((f) => (
-			<CircleMarker
-				key={f.id}
-				center={f.latlng}
-				radius={selectedId === f.id ? f.radius * 1.1 : f.radius}
-				pathOptions={{
-					color: f.color,
-					fillOpacity: 0.8,
-					weight: selectedId === f.id ? 6 : 1,
-				}}
-				eventHandlers={{
-					click: () => {
-						onSelect(f.id); // Явно вызываем onSelect
-					},
-					popupclose: () => onSelect(null)
-				}}
-				className={selectedId === f.id ? 'transition-transform scale-110' : ''}
-			>
-				<Popup
-					onClose={() => onSelect(null)}
+																}: MapMarkersProps) => {
+	return (
+		<>
+			{features.map((f) => (
+				<CircleMarker
+					key={f.id}
+					center={f.latlng}
+					radius={selectedId === f.id ? f.radius * 1.1 : f.radius}
+					pathOptions={{
+						color: f.color,
+						fillColor: selectedId === f.id ? '#fff' : f.color,
+						fillOpacity: 0.8,
+						weight: selectedId === f.id ? 5 : 2,
+						opacity: 1,
+					}}
+					eventHandlers={{
+						click: () => onSelect(f.id),
+						popupclose: () => onSelect(null)
+					}}
+					// className='duration-500 ease-in-out'
+					data-id={f.id}
 				>
-					<PopupContent feature={f}/>
-				</Popup>
-			</CircleMarker>
-		))}
-	</>
-));
+					<Popup
+						onClose={() => onSelect(null)}
+					>
+						<PopupContent feature={f}/>
+					</Popup>
+				</CircleMarker>
+			))}
+		</>
+	);
+});

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {Feature} from '../types/map.types';
+import {Feature, GeoJSONFeatureCollection} from '../types/map.types';
 import {
 	getUniqueCriteria,
 	projectPoint,
@@ -13,7 +13,7 @@ export const useMapData = () => {
 	useEffect(() => {
 		const loadData = async () => {
 			const response = await fetch(`${import.meta.env.BASE_URL}data2.geojson`);
-			const geojson = await response.json();
+			const geojson = await response.json() as GeoJSONFeatureCollection;
 
 			const uniqueCriteria = getUniqueCriteria(geojson);
 			console.log("список уникальных критериев = ", uniqueCriteria);

@@ -36,7 +36,9 @@ export const MapMarkers = memo(({
 					data-id={f.id}
 				>
 					<Popup
-						onClose={() => onSelect(null)}
+						eventHandlers={{
+							popupclose: () => onSelect(null)
+						}}
 					>
 						<PopupContent feature={f}/>
 					</Popup>

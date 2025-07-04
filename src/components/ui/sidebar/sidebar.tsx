@@ -12,8 +12,8 @@ interface SidebarProps {
 	onRegionChange: (value: string | null) => void;
 	onSettlementChange?: (value: string | null) => void;
 	dynamicMode?: boolean;
-	onToggleDynamic: () => void;
-	onResetDynamic: () => void;
+	setMode: (value: "dynamic" | "criteria" | null) => void;
+	mode: "dynamic" | "criteria" | null;
 }
 
 export const Sidebar = ({
@@ -22,9 +22,8 @@ export const Sidebar = ({
 													// filterSettlement,
 													onRegionChange,
 													// onSettlementChange,
-													// dynamicMode,
-													onToggleDynamic,
-													onResetDynamic,
+													setMode,
+													mode
 												}: SidebarProps) => {
 	const regions = Array.from(new Set(features.map((f) => f.properties['Субъект'])));
 	// const settlements = Array.from(
@@ -86,25 +85,43 @@ export const Sidebar = ({
 				{/*	</button>*/}
 				{/*)}*/}
 
-				{/* Легенды */}
-				<div className='justify-center'>
-					Легенда
+				{/* Слои */}
+				<div className='flex justify-center items-center text-[25px]'>
+					Слои
 				</div>
 				<div className="m-[4px] flex flex-col gap-[8px]">
-					{/* Легенда по убыли */}
+					{/* Кнопка по убыли */}
 					<div
-						className='border-blue border-[1px] rounded-[5px] p-[1px] m-2'
-						onClick={onToggleDynamic}
+						className={`flex justify-center rounded-[5px] p-[5px] cursor-pointer border-[1px] ${
+							mode === 'dynamic'
+								? 'border-blue-500'
+								: 'border-gray-300'
+						}`}
+						onClick={() => setMode('dynamic')}
 					>
 						<MapLegendDynamic/>
 					</div>
-					{/* Легенда по радиусам */}
+
 					<div
-						className='border-[1px] rounded-[5px] m-2 white'
-						onClick={onResetDynamic}
+						className={`flex justify-center rounded-[5px] p-[5px] cursor-pointer border-[1px] ${
+							mode === 'criteria'
+								? 'border-blue-500'
+								: 'border-gray-300'
+						}`}
+						onClick={() => setMode('criteria')}
 					>
-						<MapLegend/>
+						Здесь будут Критерии
 					</div>
+
+					{/* Кнопка отображения Границ */}
+					<div
+						className='flex justify-center border-blue border-[1px] rounded-[5px] p-[5px] m-2 opacity-50 cursor-not-allowed'
+						// onClick={() => setMode('border')}
+					>
+						Здесь будут Границы
+					</div>
+					{/* Легенда по радиусам */}
+					<MapLegend/>
 				</div>
 			</div>
 		</div>

@@ -15,7 +15,12 @@ export const MapLegend = () => {
 	return (
 		<div className="bg-white/90 rounded-lg shadow-md p-3 text-xs">
 			<div className="font-semibold text-gray-800 mb-2 text-center">
-				<div className="text-xs font-normal">Численность населения, тыс. чел.</div>
+				<div className='flex justify-center items-center text-[25px]'>
+					Легенда
+				</div>
+				<div className="text-xs font-normal">
+					Численность населения, тыс. чел.
+				</div>
 			</div>
 			<div className="flex items-end justify-center gap-[4px] h-[5dvh]">
 				{legendItems.map((item) => (

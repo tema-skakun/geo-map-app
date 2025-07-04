@@ -10,7 +10,7 @@ export const AppLayout = () => {
 	const [selectedId, setSelectedId] = useState<string | null>(null);
 	const [filterRegion, setFilterRegion] = useState<string | null>(null);
 	const [filterSettlement, setFilterSettlement] = useState<string | null>(null);
-	const [dynamicMode, setDynamicMode] = useState(false);
+	const [mode, setMode] = useState<'dynamic' | 'criteria' | null>('criteria');
 
 	// Отфильтрованные по региону/населённому пункту
 	const filteredFeatures = useMemo(
@@ -26,16 +26,16 @@ export const AppLayout = () => {
 		[features, filterRegion, filterSettlement]
 	);
 
-	// При dynamicMode — перекрашиваем точки по динамике
+	// При mode === dynamic — перекрашиваем точки по динамике
 	const displayedFeatures = useMemo(
 		() =>
 			filteredFeatures.map((f) => {
-				if (!dynamicMode) return f;
+				if (mode !== 'dynamic') return f;
 				const dynamic = Number(f.properties['Убыль населения 1989-2021']);
 				const dynColor = dynamicColorFromChange(dynamic);
 				return {...f, color: dynColor};
 			}),
-		[filteredFeatures, dynamicMode]
+		[filteredFeatures, mode]
 	);
 
 	const bounds = useMemo(() => calculateBounds(filteredFeatures), [
@@ -50,9 +50,8 @@ export const AppLayout = () => {
 				// filterSettlement={filterSettlement}
 				onRegionChange={setFilterRegion}
 				onSettlementChange={setFilterSettlement}
-				// dynamicMode={dynamicMode}
-				onToggleDynamic={() => setDynamicMode((m) => !m)}
-				onResetDynamic={() => setDynamicMode(false)}
+				setMode={setMode}
+				mode={mode}
 			/>
 			<div className="screen overflow-hidden w-[80dvw]">
 				<MapView

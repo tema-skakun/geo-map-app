@@ -11,6 +11,8 @@ interface SidebarProps {
 	onRegionChange: (value: string | null) => void;
 	onSettlementChange?: (value: string | null) => void;
 	dynamicMode?: boolean;
+	setShowPolygons: (value: boolean) => void;
+	showPolygons: boolean;
 	setMode: (value: "dynamic" | "criteria" | null) => void;
 	mode: "dynamic" | "criteria" | null;
 }
@@ -22,7 +24,9 @@ export const Sidebar = ({
 													onRegionChange,
 													// onSettlementChange,
 													setMode,
-													mode
+													mode,
+													setShowPolygons,
+													showPolygons
 												}: SidebarProps) => {
 	const regions = Array.from(new Set(features.map((f) => f.properties['Субъект'])));
 	// const settlements = Array.from(
@@ -109,10 +113,10 @@ export const Sidebar = ({
 
 					{/* Кнопка отображения Границ */}
 					<div
-						className='flex justify-center border-blue border-[1px] rounded-[5px] p-[5px] m-2 opacity-50 cursor-not-allowed'
-						// onClick={() => setMode('border')}
+						className='flex justify-center border-blue border-[1px] rounded-[5px] p-[5px] m-2 cursor-pointer'
+						onClick={() => setShowPolygons(!showPolygons)}
 					>
-						Здесь будут Границы
+						Границы субъектов
 					</div>
 					{/* Легенда по радиусам */}
 					<MapLegend/>

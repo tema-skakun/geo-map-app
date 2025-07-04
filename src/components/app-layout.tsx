@@ -5,12 +5,13 @@ import {useMapData} from '../hooks/use-map-data';
 import {calculateBounds, dynamicColorFromChange} from '../utils/map.utils';
 
 export const AppLayout = () => {
-	const {features} = useMapData();
+	const { features, polygons } = useMapData();
 
 	const [selectedId, setSelectedId] = useState<string | null>(null);
 	const [filterRegion, setFilterRegion] = useState<string | null>(null);
 	const [filterSettlement, setFilterSettlement] = useState<string | null>(null);
 	const [mode, setMode] = useState<'dynamic' | 'criteria' | null>('criteria');
+	const [showPolygons, setShowPolygons] = useState(false);
 
 	// Отфильтрованные по региону/населённому пункту
 	const filteredFeatures = useMemo(
@@ -52,13 +53,17 @@ export const AppLayout = () => {
 				onSettlementChange={setFilterSettlement}
 				setMode={setMode}
 				mode={mode}
+				setShowPolygons={setShowPolygons}
+				showPolygons={showPolygons}
 			/>
 			<div className="screen overflow-hidden w-[80dvw]">
 				<MapView
 					bounds={bounds}
 					features={displayedFeatures}
+					polygons={polygons}
 					selectedId={selectedId}
 					onSelect={setSelectedId}
+					showPolygons={showPolygons}
 				/>
 			</div>
 		</div>

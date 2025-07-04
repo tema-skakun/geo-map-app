@@ -15,6 +15,7 @@ export interface FeatureProperties {
 	"Коэффициент смертности": number;
 	"Коэффициент избыточной смертности в 2021": number;
 	"Убыль населения 1989-2021": number;
+
 	[key: string]: unknown;
 }
 
@@ -36,7 +37,29 @@ export type IconProps = {
 	fill?: string;
 };
 
+export interface PolygonFeatureProperties {
+	"ID": number;
+	"oktmo_2020": string;
+	"Название": string;
+	"Центр": string;
+	"Субъект": string;
+	"Федеральный округ": string;
+	"Смертность 2020": number;
+	"Численность населения 2020": number;
+	"Коэффициент смертности": number;
+	"Коэффициент избыточной смертности": number;
+
+	[key: string]: unknown;
+}
+
+export interface PolygonFeature {
+	id: string;
+	type: 'Feature';
+	geometry: { type: 'MultiPolygon'; coordinates: number[][][][] };
+	properties: PolygonFeatureProperties;
+}
+
 export interface GeoJSONFeatureCollection {
 	type: 'FeatureCollection';
-	features: Feature[];
+	features: Feature[] | PolygonFeature[];
 }

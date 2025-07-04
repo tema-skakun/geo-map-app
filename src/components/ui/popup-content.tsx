@@ -3,11 +3,11 @@ import {Feature} from '../../types/map.types';
 export const PopupContent = ({feature}: { feature: Feature }) => (
 	<div className="text-sm space-y-1">
 		{Object.entries(feature.properties)
-		.filter(([key, value]) => value && !key.includes('ID'))
+		.filter(([key, value]) => !key.includes('ID'))
 		.map(([key, value]) => (
 			<div key={key}>
 				<span className="font-medium">{key}: </span>
-				<span>{String(value)}</span>
+				<span>{String(value || 'нет данных')}</span>
 			</div>
 		))}
 	</div>

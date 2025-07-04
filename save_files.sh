@@ -17,13 +17,15 @@ process_file() {
         echo "// $clean_path" >> "$output_file"
     fi
     cat "$file_path" >> "$output_file"
-    echo -e "\n\n" >> "$output_file"  # Добавляем две пустые строки после содержимого файла
+    echo -e "\n" >> "$output_file"  # Добавляем две пустые строки после содержимого файла
 }
 
 # Рекурсивный обход всех файлов в текущей директории,
 # исключая ненужные директории и файлы
 find . -type f \
     -not -path "./.next/*" \
+    -not -path "./dist/*" \
+    -not -path "./src/components/icons/*" \
     -not -path "./node_modules/*" \
     -not -path "./.DS_Store/*" \
     -not -path "./.git/*" \

@@ -47,10 +47,10 @@ export const AppLayout = () => {
 			<Sidebar
 				features={features}
 				filterRegion={filterRegion}
-				filterSettlement={filterSettlement}
+				// filterSettlement={filterSettlement}
 				onRegionChange={setFilterRegion}
 				onSettlementChange={setFilterSettlement}
-				dynamicMode={dynamicMode}
+				// dynamicMode={dynamicMode}
 				onToggleDynamic={() => setDynamicMode((m) => !m)}
 				onResetDynamic={() => setDynamicMode(false)}
 			/>

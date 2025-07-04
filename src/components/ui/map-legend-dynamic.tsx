@@ -8,16 +8,16 @@ export const MapLegendDynamic = () => {
 	return (
 		<div className="bg-white/90 rounded-lg shadow-md p-3 text-xs mt-4">
 			<div className="font-semibold text-gray-800 mb-2 text-center">
-				<div>Легенда: динамика численности</div>
+				<div>Динамика численности</div>
 			</div>
-			<div className="flex flex-col gap-2 items-start">
+			<div className="flex gap-[8px] justify-center">
 				{items.map((item) => (
-					<div key={item.label} className="flex items-center gap-2">
+					<div key={item.label} className="flex justify-center items-center gap-[8px]">
 						<div
-							className="rounded-full"
+							className=""
 							style={{
-								width: '10px',
-								height: '10px',
+								width: '25px',
+								height: '25px',
 								backgroundColor: item.color,
 							}}
 						/>

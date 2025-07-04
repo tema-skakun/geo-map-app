@@ -15,7 +15,7 @@ export const MapLegend = () => {
 	return (
 		<div className="bg-white/90 rounded-lg shadow-md p-3 text-xs">
 			<div className="font-semibold text-gray-800 mb-2 text-center">
-				<div className='flex justify-center items-center text-[25px]'>
+				<div className='flex justify-center items-center text-[18px]'>
 					Легенда
 				</div>
 				<div className="text-xs font-normal">

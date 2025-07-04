@@ -2,7 +2,6 @@ import {MapLegend} from '../map-legend';
 import {MapLegendDynamic} from '../map-legend-dynamic';
 import {RegionFilter} from '../../filters/region-filter';
 import {Feature} from '../../../types/map.types';
-import {XMark} from '../../icons';
 // import {SettlementFilter} from '../../filters/settlement-filter';
 
 interface SidebarProps {
@@ -37,24 +36,19 @@ export const Sidebar = ({
 
 	return (
 		<div className="bg-white h-[calc(100%-20px)] min-w-[20dvw] flex flex-col p-[10px]">
+			<div className="font-bold mb-[8px] text-center text-[20px]">
+				Опорные населённые пункты
+			</div>
 			<div className="overflow-y-auto">
 				{/* Фильтры */}
-				<div className="h-[50px] flex items-center gap-2 pt-[10px] pb-[10px]">
+				<div
+					className="h-[50px] flex justify-start items-center gap-[12px] pt-[6px] pb-[6px]"
+				>
 					<RegionFilter
 						regions={regions}
 						value={filterRegion}
 						onChange={onRegionChange}
 					/>
-					{filterRegion && (
-						<button
-							onClick={() => onRegionChange(null)}
-							className="text-gray-500 hover:text-gray-700 p-1"
-							aria-label="Сбросить фильтр региона"
-							title="Сбросить фильтр региона"
-						>
-							<XMark width={10} height={10}/>
-						</button>
-					)}
 				</div>
 
 				{/*<div className="flex items-center gap-2">*/}
@@ -86,7 +80,7 @@ export const Sidebar = ({
 				{/*)}*/}
 
 				{/* Слои */}
-				<div className='flex justify-center items-center text-[25px]'>
+				<div className='flex justify-center items-center text-[18px]'>
 					Слои
 				</div>
 				<div className="m-[4px] flex flex-col gap-[8px]">

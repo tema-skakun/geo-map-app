@@ -24,6 +24,7 @@ const config = {
         'ds': '1920px',
       },
       colors: {
+        'blue': '#305eff',
         'secondary': '#305eff',
         'bgSecondary': '#f8f8f8',
         'btnBg': '#f9f6ff',

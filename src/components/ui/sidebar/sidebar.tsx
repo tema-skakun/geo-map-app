@@ -113,7 +113,11 @@ export const Sidebar = ({
 
 					{/* Кнопка отображения Границ */}
 					<div
-						className='flex justify-center border-blue border-[1px] rounded-[5px] p-[5px] m-2 cursor-pointer'
+						className={`flex justify-center rounded-[5px] p-[5px] cursor-pointer border-[1px] ${
+							showPolygons//TODO fix tw colors
+								? 'border-blue-500'
+								: 'border-gray-300'
+						}`}
 						onClick={() => setShowPolygons(!showPolygons)}
 					>
 						Границы субъектов

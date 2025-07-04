@@ -15,7 +15,7 @@ export const MapMarkers = memo(({
 																	onSelect
 																}: MapMarkersProps) => {
 	return (
-		<>
+		<div className='z-[100]'>
 			{features.map((f) => (
 				<CircleMarker
 					key={f.id}
@@ -44,6 +44,6 @@ export const MapMarkers = memo(({
 					</Popup>
 				</CircleMarker>
 			))}
-		</>
+		</div>
 	);
 });

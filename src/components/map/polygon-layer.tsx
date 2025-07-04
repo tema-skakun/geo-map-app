@@ -24,7 +24,7 @@ export const PolygonLayer = memo(({features}: PolygonLayerProps) => {
 	const map = useMap();
 
 	return (
-		<>
+		<div className='z-[1]'>
 			{features.map((feature) => (
 				<GeoJSON
 					key={feature.id}
@@ -54,6 +54,6 @@ export const PolygonLayer = memo(({features}: PolygonLayerProps) => {
 					}}
 				/>
 			))}
-		</>
+		</div>
 	);
 });

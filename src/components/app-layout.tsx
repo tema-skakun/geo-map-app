@@ -10,7 +10,7 @@ export const AppLayout = () => {
 	const [selectedId, setSelectedId] = useState<string | null>(null);
 	const [filterRegion, setFilterRegion] = useState<string | null>(null);
 	const [filterSettlement, setFilterSettlement] = useState<string | null>(null);
-	const [mode, setMode] = useState<'dynamic' | 'criteria' | null>('criteria');
+	const [mode, setMode] = useState<'dynamic' | 'criteria' | null>('dynamic');
 	const [showPolygons, setShowPolygons] = useState(false);
 
 	// Отфильтрованные по региону/населённому пункту

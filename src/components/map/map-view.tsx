@@ -37,12 +37,12 @@ export const MapView = ({
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
 			<FitBounds bounds={bounds}/>
-			{showPolygons && <PolygonLayer features={polygons}/>}
 			<MapMarkers
 				features={features}
 				selectedId={selectedId}
 				onSelect={onSelect}
 			/>
+			{showPolygons && <PolygonLayer features={polygons}/>}
 		</MapContainer>
 	);
 }

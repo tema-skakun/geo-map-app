@@ -19,6 +19,7 @@ export const MapMarkers = memo(({
 			{features.map((f) => (
 				<CircleMarker
 					key={f.id}
+					pane="markers"
 					center={f.latlng}
 					radius={selectedId === f.id ? f.radius * 1.1 : f.radius}
 					pathOptions={{

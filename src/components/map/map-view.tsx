@@ -1,9 +1,9 @@
-import {MapContainer, TileLayer} from 'react-leaflet';
+import {MapContainer, Pane, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import {FitBounds} from './fit-bounds';
 import {MapMarkers} from './map-markers';
 import {Bounds, Feature, PolygonFeature} from '../../types/map.types';
-import {PolygonLayer} from "./polygon-layer.tsx";
+import {PolygonLayer} from "./polygon-layer";
 
 interface MapViewProps {
 	bounds: Bounds;
@@ -37,12 +37,16 @@ export const MapView = ({
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 			/>
 			<FitBounds bounds={bounds}/>
+			{/* Панель для полигонов (ниже маркеров) */}
+			<Pane name="polygons"/>
+			{showPolygons && <PolygonLayer features={polygons}/>}
+			{/* Панель для маркеров (выше полигонов) */}
+			<Pane name="markers"/>
 			<MapMarkers
 				features={features}
 				selectedId={selectedId}
 				onSelect={onSelect}
 			/>
-			{showPolygons && <PolygonLayer features={polygons}/>}
 		</MapContainer>
 	);
 }

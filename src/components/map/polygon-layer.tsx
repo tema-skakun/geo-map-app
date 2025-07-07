@@ -28,6 +28,7 @@ export const PolygonLayer = memo(({features}: PolygonLayerProps) => {
 			{features.map((feature) => (
 				<GeoJSON
 					key={feature.id}
+					pane="polygons"
 					data={feature as any}
 					style={style}
 					eventHandlers={{

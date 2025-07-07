@@ -17,6 +17,11 @@ interface SidebarProps {
 	mode: "dynamic" | "criteria" | null;
 }
 
+const BUTTON_STYLES = {
+	active: "border-blue-500 bg-blue-50 text-blue-600 shadow-sm",
+	inactive: "border-gray-300 hover:border-gray-400 text-gray-700",
+};
+
 export const Sidebar = ({
 													features,
 													filterRegion,
@@ -88,41 +93,51 @@ export const Sidebar = ({
 					Слои
 				</div>
 				<div className="m-[4px] flex flex-col gap-[8px]">
-					{/* Кнопка по убыли */}
+					{/* Кнопка "Динамика" */}
 					<div
 						className={`flex justify-center rounded-[5px] p-[5px] cursor-pointer border-[1px] ${
-							mode === 'dynamic'
-								? 'border-blue-500'
-								: 'border-gray-300'
+							mode === 'dynamic' ? BUTTON_STYLES.active : BUTTON_STYLES.inactive
 						}`}
+						style={{
+							borderColor: mode === 'dynamic' ? '#3b82f6' : '#d1d5db', // blue-500 / gray-300
+							backgroundColor: mode === 'dynamic' ? '#eff6ff' : 'transparent', // blue-50
+						}}
 						onClick={() => setMode('dynamic')}
 					>
 						<MapLegendDynamic/>
 					</div>
 
+					{/* Кнопка "Критерии" */}
 					<div
 						className={`flex justify-center rounded-[5px] p-[5px] cursor-pointer border-[1px] ${
 							mode === 'criteria'
 								? 'border-blue-500'
 								: 'border-gray-300'
 						}`}
+						style={{
+							borderColor: mode === 'criteria' ? '#3b82f6' : '#d1d5db', // blue-500 / gray-300
+							backgroundColor: mode === 'criteria' ? '#eff6ff' : 'transparent', // blue-50
+						}}
 						onClick={() => setMode('criteria')}
 					>
-						Здесь будут Критерии
+						<span>Здесь будут Критерии</span>
 					</div>
 
-					{/* Кнопка отображения Границ */}
+					{/* Кнопка "Границы субъектов" */}
 					<div
 						className={`flex justify-center rounded-[5px] p-[5px] cursor-pointer border-[1px] ${
-							showPolygons//TODO fix tw colors
-								? 'border-blue-500'
-								: 'border-gray-300'
+							showPolygons ? BUTTON_STYLES.active : BUTTON_STYLES.inactive
 						}`}
+						style={{
+							borderColor: showPolygons ? '#3b82f6' : '#d1d5db', // blue-500 / gray-300
+							backgroundColor: showPolygons ? '#eff6ff' : 'transparent', // blue-50
+						}}
 						onClick={() => setShowPolygons(!showPolygons)}
 					>
-						Границы субъектов
+						<span>Границы субъектов</span>
 					</div>
-					{/* Легенда по радиусам */}
+
+					{/* Легенда */}
 					<MapLegend/>
 				</div>
 			</div>

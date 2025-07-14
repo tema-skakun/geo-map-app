@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import {CircleMarker, Popup} from 'react-leaflet';
+import {CircleMarker, LayerGroup, Popup} from 'react-leaflet';
 import {Feature} from '../../types/map.types';
 import {PopupContent} from '../ui/popup-content';
 
@@ -12,38 +12,50 @@ interface MapMarkersProps {
 export const MapMarkers = memo(({
 																	features,
 																	selectedId,
-																	onSelect
+																	onSelect,
 																}: MapMarkersProps) => {
 	return (
-		<div className='z-[100]'>
+		<div>
 			{features.map((f) => (
-				<CircleMarker
-					key={f.id}
-					pane="markers"
-					center={f.latlng}
-					radius={selectedId === f.id ? f.radius * 1.1 : f.radius}
-					pathOptions={{
-						color: f.color,
-						fillColor: selectedId === f.id ? '#fff' : f.color,
-						fillOpacity: 0.8,
-						weight: selectedId === f.id ? 5 : 2,
-						opacity: 1,
-					}}
-					eventHandlers={{
-						click: () => onSelect(f.id),
-						popupclose: () => onSelect(null)
-					}}
-					// className='duration-500 ease-in-out'
-					data-id={f.id}
-				>
-					<Popup
+				<LayerGroup key={f.id}>
+					{/* Невидимый маркер для обработки кликов (радиус 20px) */}
+					<CircleMarker
+						pane="markers"
+						center={f.latlng}
+						radius={20}
+						pathOptions={{
+							stroke: false,
+							fillOpacity: 0,
+						}}
 						eventHandlers={{
+							click: () => onSelect(f.id),
 							popupclose: () => onSelect(null)
 						}}
+						interactive={true}
 					>
-						<PopupContent feature={f}/>
-					</Popup>
-				</CircleMarker>
+						<Popup
+							eventHandlers={{
+								popupclose: () => onSelect(null),
+							}}
+						>
+							<PopupContent feature={f}/>
+						</Popup>
+					</CircleMarker>
+					{/* Визуальный маркер (без обработки кликов) */}
+					<CircleMarker
+						pane="markers"
+						center={f.latlng}
+						radius={selectedId === f.id ? f.radius * 1.1 : f.radius}
+						pathOptions={{
+							color: f.color,
+							fillColor: selectedId === f.id ? '#fff' : f.color,
+							fillOpacity: 0.8,
+							weight: selectedId === f.id ? 4 : 1,
+							opacity: 1,
+						}}
+						interactive={false}
+					/>
+				</LayerGroup>
 			))}
 		</div>
 	);

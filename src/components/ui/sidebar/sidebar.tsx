@@ -99,8 +99,8 @@ export const Sidebar = ({
 							mode === 'dynamic' ? BUTTON_STYLES.active : BUTTON_STYLES.inactive
 						}`}
 						style={{
-							borderColor: mode === 'dynamic' ? '#3b82f6' : '#d1d5db', // blue-500 / gray-300
-							backgroundColor: mode === 'dynamic' ? '#eff6ff' : 'transparent', // blue-50
+							borderColor: mode === 'dynamic' ? '#f63b3b' : '#d1d5db',
+							backgroundColor: mode === 'dynamic' ? '#fff5f5' : 'transparent',
 						}}
 						onClick={() => setMode('dynamic')}
 					>
@@ -115,8 +115,8 @@ export const Sidebar = ({
 								: 'border-gray-300'
 						}`}
 						style={{
-							borderColor: mode === 'criteria' ? '#3b82f6' : '#d1d5db', // blue-500 / gray-300
-							backgroundColor: mode === 'criteria' ? '#eff6ff' : 'transparent', // blue-50
+							borderColor: mode === 'criteria' ? '#f63b3b' : '#d1d5db',
+							backgroundColor: mode === 'criteria' ? '#fff5f5' : 'transparent',
 						}}
 						onClick={() => setMode('criteria')}
 					>
